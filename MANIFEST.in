@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include geslog *.css
+recursive-include geslog *.csv
+recursive-include geslog *.html
+recursive-include geslog *.ico
+recursive-include geslog *.js
+recursive-include geslog *.json
+recursive-include geslog *.md
+recursive-include geslog *.png
+recursive-include geslog *.py
+recursive-include geslog *.svg
+recursive-include geslog *.txt
+recursive-exclude geslog *.pyc
