@@ -11,4 +11,9 @@ frappe.ui.form.on("Cost Center", {
 			return { filters: { associate_to_cost_center: 1}}
 		})
 	},
+	is_task(frm){
+		frm.set_query("item_group", "item_group", () => {
+			return { filters: { associate_to_cost_center: !frm.doc.is_task}}
+		})
+	}
 })
