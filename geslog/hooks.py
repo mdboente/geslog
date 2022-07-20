@@ -33,6 +33,7 @@ app_license = "MIT"
 # include js in doctype views
 doctype_js = {
 	"Cost Center": "custom_scripts/cost_center/cost_center.js",
+	"Material Request": "custom_scripts/material_request/material_request.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -83,9 +84,9 @@ doctype_js = {
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Workspace": "geslog.overrides.workspace.workspace.CustomWorkspace"
+}
 
 # Document Events
 # ---------------
