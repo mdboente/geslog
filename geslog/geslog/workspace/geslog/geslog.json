@@ -93,7 +93,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-20 13:29:47.935105",
+ "modified": "2022-07-24 19:01:04.437800",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog",
@@ -116,7 +116,7 @@
    "format": "{}",
    "label": "Warehouses",
    "link_to": "Warehouse",
-   "stats_filter": "{\"is_client\": false}",
+   "stats_filter": "",
    "type": "DocType"
   },
   {
@@ -124,8 +124,8 @@
    "doc_view": "List",
    "format": "{}",
    "label": "Clients",
-   "link_to": "Warehouse",
-   "stats_filter": "{\"is_client\":true}",
+   "link_to": "Client",
+   "stats_filter": "",
    "type": "DocType"
   },
   {
