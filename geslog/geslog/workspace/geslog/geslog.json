@@ -69,7 +69,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Items",
+   "label": "Cost Center",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -86,14 +86,23 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Item Group",
-   "link_to": "Item Group",
+   "label": "Expense Element",
+   "link_to": "Expense Element",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cost Center",
+   "link_to": "Cost Center",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2022-07-24 19:02:38.700697",
+ "modified": "2022-07-24 19:04:04.765413",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog",
