@@ -1,12 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:client_name",
  "creation": "2022-07-24 14:28:09.442712",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "name1",
+  "client_name",
   "requests_on_demand",
   "show_without_delivery_in_follow",
   "column_break_2",
@@ -30,13 +31,6 @@
   "access_to_all_warehouses_with_all_operations"
  ],
  "fields": [
-  {
-   "fieldname": "name1",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Name",
-   "reqd": 1
-  },
   {
    "default": "0",
    "fieldname": "requests_on_demand",
@@ -153,11 +147,19 @@
    "fieldname": "access_to_all_warehouses_with_all_operations",
    "fieldtype": "Check",
    "label": "Access to all warehouses with all operations"
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-24 18:40:37.191762",
+ "modified": "2022-07-25 15:49:30.142152",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Client",
