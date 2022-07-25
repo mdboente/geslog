@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:DEM-{client}-{####}",
  "creation": "2022-07-24 17:46:31.277612",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -55,7 +56,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-24 17:51:36.502521",
+ "modified": "2022-07-25 15:54:20.034852",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Demand",
