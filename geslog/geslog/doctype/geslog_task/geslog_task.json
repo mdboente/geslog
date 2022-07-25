@@ -60,9 +60,11 @@
    "label": "Reservation"
   },
   {
+   "depends_on": "eval:doc.use_reservation === 1",
    "fieldname": "reservation_number",
    "fieldtype": "Data",
-   "label": "Reservation Number"
+   "label": "Reservation Number",
+   "mandatory_depends_on": "eval:doc.use_reservation === 1"
   },
   {
    "fieldname": "items",
