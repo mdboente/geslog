@@ -14,10 +14,9 @@
   "year",
   "reservation",
   "use_reservation",
-  "limit_the_reservation",
-  "column_break_9",
   "reservation_number",
   "section_break_9",
+  "limit_reservation",
   "items"
  ],
  "fields": [
@@ -70,6 +69,7 @@
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Items",
+   "mandatory_depends_on": "eval: doc.limit_reservation === 1",
    "options": "Geslog Task Items"
   },
   {
@@ -85,18 +85,14 @@
   },
   {
    "default": "1",
-   "fieldname": "limit_the_reservation",
+   "fieldname": "limit_reservation",
    "fieldtype": "Check",
    "label": "Limit the Reservation"
-  },
-  {
-   "fieldname": "column_break_9",
-   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-24 18:39:46.983135",
+ "modified": "2022-07-25 15:58:42.124816",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Task",
