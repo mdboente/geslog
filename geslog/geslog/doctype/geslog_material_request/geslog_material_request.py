@@ -123,3 +123,25 @@ def make_stock_entry(source_name, target_doc=None):
 	}, target_doc, set_missing_values)
 
 	return doclist
+
+
+@frappe.whitelist()
+def make_material_return(source_name, target_doc=None):
+
+	doclist = get_mapped_doc("Geslog Material Request", source_name, {
+		"Geslog Material Request": {
+			"doctype": "Geslog Material Return",
+			"validation": {
+				"docstatus": ["=", 1]
+			}
+		},
+		"Geslog Material Request Item": {
+			"doctype": "Geslog Material Return Item",
+			"field_map": {
+				"transferred_qty": "assigned",
+			},
+		}
+	}, target_doc)
+
+	return doclist
+

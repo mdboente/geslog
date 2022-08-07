@@ -134,6 +134,9 @@ frappe.ui.form.on('Geslog Material Request', {
         if (frm.doc.docstatus === 1) {
                 frm.add_custom_button(__("Stock Entry"),
                     () => frm.events.make_stock_entry(frm), __('Create'));
+
+                frm.add_custom_button(__("Material Return"),
+                    () => frm.events.make_material_return(frm), __("Create"));
         }
     },
 
@@ -233,6 +236,13 @@ frappe.ui.form.on('Geslog Material Request', {
 					"source_warehouse", frm.doc.default_source_warehouse);
 			})
         }
+    },
+
+    make_material_return: function (frm){
+        frappe.model.open_mapped_doc({
+            "method": "geslog.geslog.doctype.geslog_material_request.geslog_material_request.make_material_return",
+            frm: frm
+        })
     },
 
     make_stock_entry: function(frm) {
