@@ -33,7 +33,10 @@ function setup_items_field(frm){
             "item_code": item.item_code,
             "description": item.description,
             "assigned": item.transferred_qty,
-            "returned": 0
+            "source_warehouse": item.source_warehouse,
+            "returned": 0,
+            "stock_uom": item.uom,
+            "price": item.price
         })
         frm.refresh_field("items")
     })
