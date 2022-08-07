@@ -16,7 +16,8 @@ app_license = "MIT"
 # app_include_css = "/assets/geslog/css/geslog.css"
 app_include_js = [
 	"/assets/geslog/js/geslog/datetime.js",
-	"/assets/geslog/js/geslog/form.js"
+	"/assets/geslog/js/geslog/form.js",
+	"/assets/geslog/js/geslog/list.js"
 ]
 
 # include js, css files in header of web template
