@@ -71,11 +71,10 @@ class GeslogMaterialRequest(Document):
 			if req_item.item_code in items_in_stock:
 				stock_qty = items_in_stock.get(req_item.item_code, 0)
 
-				transferred_qty = req_item.qty - stock_qty
-				if transferred_qty < 0:
-					transferred_qty = 0
+				req_item.transferred_qty += stock_qty
 
-				req_item.transferred_qty += transferred_qty
+				if req_item.transferred_qty < 0:
+					self.transferred_qty = 0
 
 				if req_item.transferred_qty != req_item.qty:
 					status = "Pending"
