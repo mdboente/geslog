@@ -127,6 +127,11 @@ def make_stock_entry(source_name, target_doc=None):
 @frappe.whitelist()
 def make_material_return(source_name, target_doc=None):
 
+	def update_item(obj, target, source_parent):
+
+		target.status = " "
+		target.returned_qty = 0
+
 	doclist = get_mapped_doc("Geslog Material Request", source_name, {
 		"Geslog Material Request": {
 			"doctype": "Geslog Material Return",
@@ -138,7 +143,11 @@ def make_material_return(source_name, target_doc=None):
 			"doctype": "Geslog Material Return Item",
 			"field_map": {
 				"transferred_qty": "assigned",
+				"uom": "stock_uom",
+				"source_warehouse": "target_warehouse"
 			},
+			"postprocess": update_item,
+			"condition": lambda obj: obj.transferred_qty != 0
 		}
 	}, target_doc)
 
