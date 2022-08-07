@@ -14,7 +14,11 @@ app_license = "MIT"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/geslog/css/geslog.css"
-# app_include_js = "/assets/geslog/js/geslog.js"
+app_include_js = [
+	"/assets/geslog/js/geslog/datetime.js",
+	"/assets/geslog/js/geslog/form.js",
+	"/assets/geslog/js/geslog/list.js"
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/geslog/css/geslog.css"
@@ -85,7 +89,8 @@ doctype_js = {
 # Override standard doctype classes
 
 override_doctype_class = {
-	"Workspace": "geslog.overrides.workspace.workspace.CustomWorkspace"
+	"Workspace": "geslog.overrides.workspace.workspace.CustomWorkspace",
+	"Stock Entry": "geslog.overrides.stock_entry.stock_entry.CustomStockEntry"
 }
 
 # Document Events

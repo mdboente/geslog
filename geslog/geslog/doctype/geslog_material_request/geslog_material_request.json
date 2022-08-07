@@ -1,0 +1,238 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{client_abbr}-{####}",
+ "creation": "2022-07-25 16:09:36.876161",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "client",
+  "client_abbr",
+  "column_break_3",
+  "date",
+  "status",
+  "section_break_3",
+  "associated_to",
+  "column_break_4",
+  "task",
+  "expense_account",
+  "cost_center",
+  "expense_element",
+  "reservation_number",
+  "items_section",
+  "default_source_warehouse",
+  "items",
+  "total_amount",
+  "another_data_section",
+  "load_tool_to",
+  "identify_number",
+  "column_break_14",
+  "work_order",
+  "target",
+  "signatures_section",
+  "request_by",
+  "column_break_19",
+  "approve_by",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "associated_to",
+   "fieldtype": "Select",
+   "label": "Associated to",
+   "options": "\nCost Center\nTask"
+  },
+  {
+   "depends_on": "eval: doc.associated_to === \"Cost Center\"",
+   "fetch_from": "cost_center.expense_account",
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "label": "Expense Account",
+   "mandatory_depends_on": "eval: doc.associated_to === \"Cost Center\"",
+   "options": "Account"
+  },
+  {
+   "depends_on": "eval: doc.associated_to === \"Cost Center\" && doc.expense_account && doc.cost_center",
+   "fieldname": "expense_element",
+   "fieldtype": "Link",
+   "label": "Expense Element",
+   "options": "Expense Element"
+  },
+  {
+   "depends_on": "eval: doc.associated_to === \"Task\"",
+   "fieldname": "reservation_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Reservation Number",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval: doc.associated_to === \"Cost Center\" && doc.expense_account",
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "mandatory_depends_on": "eval: doc.associated_to === \"Cost Center\"",
+   "options": "Cost Center"
+  },
+  {
+   "depends_on": "eval: doc.associated_to === \"Task\"",
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "label": "Task",
+   "mandatory_depends_on": "eval: doc.associated_to === \"Task\"",
+   "options": "Geslog Task"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Geslog Material Request Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "another_data_section",
+   "fieldtype": "Section Break",
+   "label": "Another Data"
+  },
+  {
+   "fieldname": "load_tool_to",
+   "fieldtype": "Data",
+   "label": "Load Tool to"
+  },
+  {
+   "fieldname": "identify_number",
+   "fieldtype": "Data",
+   "label": "Identify Number"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "work_order",
+   "fieldtype": "Data",
+   "label": "Work Order"
+  },
+  {
+   "fieldname": "target",
+   "fieldtype": "Data",
+   "label": "Target"
+  },
+  {
+   "fieldname": "signatures_section",
+   "fieldtype": "Section Break",
+   "label": "Signatures"
+  },
+  {
+   "fieldname": "request_by",
+   "fieldtype": "Link",
+   "label": "Request by",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approve_by",
+   "fieldtype": "Link",
+   "label": "Approve by",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "default_source_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Source Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "label": "Client",
+   "options": "Client",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "client",
+   "fetch_from": "client.abbr",
+   "fieldname": "client_abbr",
+   "fieldtype": "Data",
+   "label": "Client Abbr",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Geslog Material Request",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDraft\nSubmitted\nPending\nTransferred",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-07-27 16:24:21.068456",
+ "modified_by": "Administrator",
+ "module": "Geslog",
+ "name": "Geslog Material Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

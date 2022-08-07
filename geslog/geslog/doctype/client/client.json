@@ -1,0 +1,183 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:client_name",
+ "creation": "2022-07-24 14:28:09.442712",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "client_name",
+  "requests_on_demand",
+  "show_without_delivery_in_follow",
+  "column_break_2",
+  "abbr",
+  "consecutive_section",
+  "next_request_number",
+  "next_transfer_number",
+  "next_log_inv_model_number",
+  "reset_consecutive_in_the_next_year_automatically",
+  "column_break_10",
+  "next_extraplan_request_number",
+  "next_delivery_number",
+  "section_break_13",
+  "according_to_general_settings",
+  "in_any_day",
+  "column_break_17",
+  "less_than_90_days",
+  "less_than_30_days",
+  "warehouses_section",
+  "warehouse",
+  "access_to_all_warehouses_with_all_operations"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "requests_on_demand",
+   "fieldtype": "Check",
+   "label": "Requests are based on demand",
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "show_without_delivery_in_follow",
+   "fieldtype": "Check",
+   "label": "Show Always the requests without delivery in the follow-up, though they have been assigned."
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Abbr",
+   "reqd": 1
+  },
+  {
+   "fieldname": "consecutive_section",
+   "fieldtype": "Section Break",
+   "label": "Consecutive"
+  },
+  {
+   "fieldname": "next_request_number",
+   "fieldtype": "Data",
+   "label": "Next Request Number"
+  },
+  {
+   "fieldname": "next_transfer_number",
+   "fieldtype": "Data",
+   "label": "Next Transfer Number"
+  },
+  {
+   "fieldname": "next_log_inv_model_number",
+   "fieldtype": "Data",
+   "label": "Next Log. Inv. Model Number "
+  },
+  {
+   "default": "0",
+   "fieldname": "reset_consecutive_in_the_next_year_automatically",
+   "fieldtype": "Check",
+   "label": "Reset Consecutive in the next year automatically "
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "next_extraplan_request_number",
+   "fieldtype": "Data",
+   "label": "Next ExtraPlan Request Number "
+  },
+  {
+   "fieldname": "next_delivery_number",
+   "fieldtype": "Data",
+   "label": "Next Delivery Number "
+  },
+  {
+   "description": "Only allow to return item assigned in the next year ",
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break",
+   "label": "Date Limits "
+  },
+  {
+   "default": "0",
+   "fieldname": "according_to_general_settings",
+   "fieldtype": "Check",
+   "label": "According to General Settings "
+  },
+  {
+   "default": "0",
+   "fieldname": "in_any_day",
+   "fieldtype": "Check",
+   "label": "in any day"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "less_than_90_days",
+   "fieldtype": "Check",
+   "label": "Less than 90 days"
+  },
+  {
+   "default": "0",
+   "fieldname": "less_than_30_days",
+   "fieldtype": "Check",
+   "label": "less than 30 days"
+  },
+  {
+   "fieldname": "warehouses_section",
+   "fieldtype": "Section Break",
+   "label": "Warehouses"
+  },
+  {
+   "description": "warehouse which is allowed request and transfer items ",
+   "fieldname": "warehouse",
+   "fieldtype": "Table",
+   "label": "Warehouse",
+   "options": "Client Warehouse",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "access_to_all_warehouses_with_all_operations",
+   "fieldtype": "Check",
+   "label": "Access to all warehouses with all operations"
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "reqd": 1,
+   "unique": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-07-25 15:49:30.142152",
+ "modified_by": "Administrator",
+ "module": "Geslog",
+ "name": "Client",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

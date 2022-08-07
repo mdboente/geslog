@@ -2,18 +2,28 @@
 
 frappe.ui.form.on("Cost Center", {
 	setup(frm){
+		frm.set_query("expense_account", () => {
+			return {
+				filters : {
+					account_type: "Expense Account"
+				}
+			}
+		})
+	}
+})
 
-		frm.set_query("client", () => {
-			return {filters: { is_client: 1}}
-		})
+frappe.ui.form.on("Cost Center Expense Element", {
+	expense_elements_add(frm){
+		let current_elements = frm.doc.expense_elements || [];
+        frm.set_query("element","expense_elements", () => {
+            return {
+                filters: {
+                    name: ["not in", current_elements
+						.filter(e => e.element)
+						.map(e => {return e.element})]
+                }
+            }
+        })
 
-		frm.set_query("item_group", "item_group", () => {
-			return { filters: { associate_to_cost_center: 1}}
-		})
-	},
-	is_task(frm){
-		frm.set_query("item_group", "item_group", () => {
-			return { filters: { associate_to_cost_center: !frm.doc.is_task}}
-		})
 	}
 })
