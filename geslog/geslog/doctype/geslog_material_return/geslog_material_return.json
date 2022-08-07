@@ -1,18 +1,22 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{client_abbr}-{######}",
  "creation": "2022-07-27 13:26:31.463489",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "material_request",
-  "expense_account",
-  "cost_center",
+  "client",
+  "client_abbr",
+  "sap_code",
+  "status",
   "column_break_4",
   "date",
+  "expense_account",
+  "cost_center",
   "espense_element",
-  "sap_code",
   "items_section",
   "items",
   "signatures_section",
@@ -109,12 +113,34 @@
    "label": "Items",
    "options": "Geslog Material Return Item",
    "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "\nDraft\nSubmitted\nPending\nTransferred",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "material_request.client",
+   "fieldname": "client",
+   "fieldtype": "Data",
+   "label": "Client",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "material_request.client_abbr",
+   "fieldname": "client_abbr",
+   "fieldtype": "Data",
+   "label": "Client Abbr",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-27 14:20:03.823886",
+ "modified": "2022-08-07 17:21:34.708610",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Material Return",
