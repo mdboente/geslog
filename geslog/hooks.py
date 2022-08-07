@@ -88,7 +88,8 @@ doctype_js = {
 # Override standard doctype classes
 
 override_doctype_class = {
-	"Workspace": "geslog.overrides.workspace.workspace.CustomWorkspace"
+	"Workspace": "geslog.overrides.workspace.workspace.CustomWorkspace",
+	"Stock Entry": "geslog.overrides.stock_entry.stock_entry.CustomStockEntry"
 }
 
 # Document Events
