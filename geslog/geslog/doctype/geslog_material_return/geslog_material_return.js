@@ -65,13 +65,33 @@ frappe.ui.form.on('Geslog Material Return', {
     refresh(frm){
         setup_material_request_field(frm)
         setup_request_by_field(frm)
+
+         const status_indicator_color = {
+            'Pending': "orange",
+            'Transferred': 'blue'
+        };
+
+        if(!frm.is_new() &&  Object.keys(status_indicator_color).includes(frm.doc.status)){
+            frm.page.set_indicator(frm.doc.status, status_indicator_color[frm.doc.status])
+        }
+
+        if (frm.doc.docstatus === 1 && frm.doc.status !== "Transferred") {
+            frm.add_custom_button(__("Stock Entry"),
+                () => frm.events.make_stock_entry(frm), __('Create'));
+        }
     },
     validate(frm){
         validate_items(frm.doc.items || [])
     },
     material_request(frm){
         on_material_request(frm)
-    }
+    },
+    make_stock_entry: function(frm) {
+		frappe.model.open_mapped_doc({
+			method: "geslog.geslog.doctype.geslog_material_return.geslog_material_return.make_stock_entry",
+			frm: frm
+		});
+	},
 });
 
 frappe.ui.form.on("Geslog Material Return Item", {
