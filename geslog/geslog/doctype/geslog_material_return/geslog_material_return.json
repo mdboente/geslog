@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-07-27 13:26:31.463489",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "material_request",
+  "expense_account",
+  "cost_center",
+  "column_break_4",
+  "date",
+  "espense_element",
+  "sap_code",
+  "items_section",
+  "items",
+  "signatures_section",
+  "request_by",
+  "column_break_9",
+  "approve_by",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material Request",
+   "options": "Geslog Material Request",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "material_request.expense_account",
+   "fieldname": "expense_account",
+   "fieldtype": "Data",
+   "label": "Expense Account",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "material_request.cost_center",
+   "fieldname": "cost_center",
+   "fieldtype": "Data",
+   "label": "Cost Center",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "material_request.expense_element",
+   "fieldname": "espense_element",
+   "fieldtype": "Data",
+   "label": "Espense Element",
+   "read_only": 1
+  },
+  {
+   "fieldname": "signatures_section",
+   "fieldtype": "Section Break",
+   "label": "Signatures"
+  },
+  {
+   "fieldname": "request_by",
+   "fieldtype": "Link",
+   "label": "Request by",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approve_by",
+   "fieldtype": "Link",
+   "label": "Approve by",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "sap_code",
+   "fieldtype": "Data",
+   "label": "SAP-MM Code"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Geslog Material Return",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "depends_on": "material_request",
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Geslog Material Return Item",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-07-27 14:20:03.823886",
+ "modified_by": "Administrator",
+ "module": "Geslog",
+ "name": "Geslog Material Return",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
