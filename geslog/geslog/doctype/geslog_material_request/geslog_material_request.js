@@ -201,6 +201,7 @@ frappe.ui.form.on('Geslog Material Request', {
                             description: item.description,
                             uom: item.uom,
                             qty: item.amount,
+                            source_warehouse: frm.doc.default_source_warehouse
                         })
 
                         frm.events.get_item_details(frm, child_item)
