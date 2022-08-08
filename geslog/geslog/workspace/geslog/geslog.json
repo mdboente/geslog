@@ -69,7 +69,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Demad",
+   "label": "Demand",
    "link_to": "Demand",
    "link_type": "DocType",
    "onboard": 0,
@@ -120,7 +120,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-07-24 19:13:29.037185",
+ "modified": "2022-08-08 00:42:39.244517",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog",
@@ -133,26 +133,17 @@
    "doc_view": "List",
    "format": "{} pending",
    "label": "Material Request",
-   "link_to": "Material Request",
-   "stats_filter": "{\n    \"company\": [\"like\", '%' + frappe.defaults.get_global_default(\"company\") + '%'],\n    \"status\": \"Pending\"\n}",
+   "link_to": "Geslog Material Request",
+   "stats_filter": "{\n    \"status\": \"Pending\"\n}",
    "type": "DocType"
   },
   {
-   "color": "Green",
+   "color": "Yellow",
    "doc_view": "List",
-   "format": "{}",
-   "label": "Warehouses",
-   "link_to": "Warehouse",
-   "stats_filter": "",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "format": "{}",
-   "label": "Clients",
-   "link_to": "Client",
-   "stats_filter": "",
+   "format": "{} Pending",
+   "label": "Material Return",
+   "link_to": "Geslog Material Return",
+   "stats_filter": "{\n    \"status\": \"Pending\"\n}",
    "type": "DocType"
   },
   {
@@ -162,6 +153,18 @@
    "label": "Expense Accounts",
    "link_to": "Account",
    "stats_filter": "{\n    \"account_type\": \"Expense Account\"\n}",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Expense Element",
+   "link_to": "Expense Element",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Item",
+   "link_to": "Item",
    "type": "DocType"
   }
  ]

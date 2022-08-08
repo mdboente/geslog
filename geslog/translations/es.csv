@@ -8,3 +8,54 @@ Expense Account, Cuenta de Gasto
 Expense Accounts, Cuentas de Gastos
 Is Task, es una Tarea
 is client, es un cliente
+Without Management, Sin Gestión
+Geslog Material Request, Solicitud de Materiales
+Material Request, Solicitud de Materiales
+Geslog Material Return, Solicitud de Devolución
+Material Return, Solicitud de Devolución
+Source Warehouse, Almacén al que se Solicita
+Default Source Warehouse, Almacén al que se Solicita
+UOM, UM
+Request by, Solicitado por
+Approve by, Aprobado por
+Associated to, Asociado
+Stock Entry, Asignación
+Demand, Demanda
+Trimester, Trimestre
+Second, Segundo
+Third, Tercero
+Fourth, Cuarto
+Expense Element, Elemento de Gasto
+Requests are based on demand, Las Solicitudes se basan la en demanda realizada
+Show Always the requests without delivery in the follow-up though they have been assigned, Mostrar Siempre las solicitudes sin entregar en el seguimiento aunque hayan sido asignadas
+Less than 90 days, Menos de 90 días
+Less than 30 days, Menos de 30 días
+in any day, en cualquier día
+According to General Settings , Acorde a los Ajustes Generales
+Only allow to return item assigned in the next year , Solo permitir devolver productos asignados en el año y
+warehouse which is allowed request and transfer items , Almacenes a los cuales is puedes solicitar o transferir productos
+Access to all warehouses with all operations, Acceso a todos los almacenes realizando solicitudes y transferencias
+Date Limits, Límite de Fechas
+Next Request Number, Próximo Número de Solicitud
+Next Transfer Number, Próximo Número de Transferencia
+Next Log. Inv. Model Number, Próximo Número de Model de Log. Inv.
+Next Delivery Number, Próximo Número de Entrega
+Next ExtraPlan Request Number, Próximo Número de Solicitud Extraplan
+Consecutives, Consecutivos
+Reset Consecutive in the next year automatically , Resetear Consecutivos automaticamente al cambiar el año
+Request,Solicitud
+Load Tool to, Cargar Herramienta a
+Another Data, Otros Datos
+Identify Number, Carnét de Identidad
+Target, Destino
+Signatures, Pie de Firmas
+Expense Elements, Elementos de Gastos
+Element, Elemento
+Geslog Task, Tarea
+Use Reservation, Usar Reservación
+Reservation Number, Número de Reserva
+Limit the Reservation, Límite de Reserva
+Amount, Cantidad
+Reservation, Reservación
+SAP-MM Code, Código SAP-MM
+

@@ -50,6 +50,7 @@
    "fieldtype": "Currency",
    "label": "Amount",
    "precision": "2",
+   "print_hide": 1,
    "read_only": 1,
    "reqd": 1
   },
@@ -61,8 +62,9 @@
   {
    "fieldname": "source_warehouse",
    "fieldtype": "Link",
-   "label": "Source warehouse",
+   "label": "Source Warehouse",
    "options": "Warehouse",
+   "print_hide": 1,
    "reqd": 1
   },
   {
@@ -79,6 +81,7 @@
    "in_list_view": 1,
    "label": "Price",
    "precision": "2",
+   "print_hide": 1,
    "read_only": 1,
    "reqd": 1
   },
@@ -90,12 +93,14 @@
    "fieldname": "actual_qty",
    "fieldtype": "Float",
    "label": "Actual Qty",
+   "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "stock_qty",
    "fieldtype": "Float",
    "label": "Stock Qty",
+   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -103,13 +108,14 @@
    "fieldname": "transferred_qty",
    "fieldtype": "Float",
    "label": "Transferred Qty",
+   "print_hide": 1,
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-07-27 18:42:08.625934",
+ "modified": "2022-08-07 23:18:39.428300",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Material Request Item",
