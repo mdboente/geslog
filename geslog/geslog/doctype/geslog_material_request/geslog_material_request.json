@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{client_abbr}-{####}",
+ "autoname": "format:{client_abbr}-{######}",
  "creation": "2022-07-25 16:09:36.876161",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -192,6 +192,7 @@
    "fieldname": "client_abbr",
    "fieldtype": "Data",
    "label": "Client Abbr",
+   "print_hide": 1,
    "read_only": 1
   },
   {
@@ -208,13 +209,14 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "\nDraft\nSubmitted\nPending\nTransferred",
+   "print_hide": 1,
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-07-27 16:24:21.068456",
+ "modified": "2022-08-07 23:16:32.248658",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Material Request",
