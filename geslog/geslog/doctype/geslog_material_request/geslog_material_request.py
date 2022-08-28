@@ -1,11 +1,35 @@
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 from frappe.utils import flt
 from frappe.model.mapper import get_mapped_doc
+from typing import Dict
 
 
 class GeslogMaterialRequest(Document):
+
+	def validate(self):
+		self.validate_items()
+
+	def validate_items(self):
+		reserved_items = self.get_reserved_items()
+		for item in self.get("items"):
+			for reserved_item in reserved_items:
+				if item.qty > reserved_item.qty:
+					frappe.throw(
+						_("Row {0}: {1} cannot exceed the reserved qty ")
+						.format(item.idx, item.description))
+
+	def get_reserved_items(self):
+
+		if self.get("associated_to") == "Task":
+			task = frappe.get_doc("Geslog Task", self.get("task"))
+			return task.items
+		else:
+			client = self.get("client")
+			demand = frappe.get_last_doc("Demand", {"client": client})
+			return demand.items
 
 	@frappe.whitelist()
 	def get_warehouses_operations(self, operation: str = None):
