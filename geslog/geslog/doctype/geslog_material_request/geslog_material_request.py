@@ -57,6 +57,33 @@ class GeslogMaterialRequest(Document):
 
 		return assigned_items
 
+	def update_task_items(self, items: Dict[str, str]):
+		"""
+		:param items: Dict[item_name, qty in stock]
+		"""
+
+		task = frappe.get_doc("Geslog Task", self.get("task"))
+
+		for item_in_stock in items:
+			for item in task.get("items"):
+				if item.item_code == item_in_stock:
+					item.qty -= items.get(item.item_code)
+
+		task.save()
+
+	def update_demand_items(self, stock_items: Dict[str, str]):
+
+		client = self.get("client")
+		demand = frappe.get_last_doc(
+			"Demand", filters={"client": client})
+
+		for stock_item in stock_items:
+			for item in demand.get("items") or []:
+				if item.item_code == stock_item:
+					item.qty = flt(item.qty - stock_items.get(item.item_code))
+
+		demand.save()
+
 	def update_stock(self, stock_entry):
 
 		status = "Transferred"
@@ -66,6 +93,11 @@ class GeslogMaterialRequest(Document):
 			item_qty = items_in_stock.get(item.item_code, 0)
 			item_qty = item_qty + item.qty
 			items_in_stock[item.item_code] = item_qty
+
+		if self.get("associated_to") == "Task":
+			self.update_task_items(items_in_stock)
+		else:
+			self.update_demand_items(items_in_stock)
 
 		for req_item in self.get("items") or []:
 			if req_item.item_code in items_in_stock:
