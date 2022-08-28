@@ -9,7 +9,7 @@
   "item_code",
   "description",
   "uom",
-  "amount"
+  "qty"
  ],
  "fields": [
   {
@@ -36,16 +36,16 @@
    "read_only": 1
   },
   {
-   "fieldname": "amount",
+   "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Amount"
+   "label": "Qty"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-07-24 17:17:26.839380",
+ "modified": "2022-08-28 01:37:14.256495",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Task Items",
