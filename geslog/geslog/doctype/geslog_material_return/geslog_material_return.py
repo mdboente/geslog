@@ -13,16 +13,16 @@ class GeslogMaterialReturn(StatusUpdater, BuyingController):
 	def update_stock(self, stock_entry):
 
 		status = "Transferred"
-		items_in_stock = {}
+		items_to_return = {}
 
 		for item in stock_entry.get("items") or []:
-			item_qty = items_in_stock.get(item.item_code, 0)
+			item_qty = items_to_return.get(item.item_code, 0)
 			item_qty = item_qty + item.qty
-			items_in_stock[item.item_code] = item_qty
+			items_to_return[item.item_code] = item_qty
 
 		for req_item in self.get("items") or []:
-			if req_item.item_code in items_in_stock:
-				stock_qty = items_in_stock.get(req_item.item_code, 0)
+			if req_item.item_code in items_to_return:
+				stock_qty = items_to_return.get(req_item.item_code, 0)
 
 				req_item.returned_qty += stock_qty
 
@@ -31,6 +31,11 @@ class GeslogMaterialReturn(StatusUpdater, BuyingController):
 
 				if req_item.returned_qty != req_item.returned:
 					status = "Pending"
+
+		material_request = frappe.get_doc(
+			"Geslog Material Request", self.get("material_request"))
+
+		material_request.return_items(items_to_return)
 
 		self.db_set("status", status)
 		self.update_children()

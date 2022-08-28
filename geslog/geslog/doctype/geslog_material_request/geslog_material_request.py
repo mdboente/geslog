@@ -81,21 +81,21 @@ class GeslogMaterialRequest(Document):
 
 		return assigned_items
 
-	def update_task_items(self, items: Dict[str, str]):
-		"""
-		:param items: Dict[item_name, qty in stock]
-		"""
+	def update_task_items(self, items: Dict[str, str], remove=True):
 
 		task = frappe.get_doc("Geslog Task", self.get("task"))
 
 		for item_in_stock in items:
 			for item in task.get("items"):
 				if item.item_code == item_in_stock:
-					item.qty -= items.get(item.item_code)
+					if remove:
+						item.qty -= items.get(item.item_code)
+					else:
+						item.qty += items.get(item.item_code)
 
 		task.save()
 
-	def update_demand_items(self, stock_items: Dict[str, str]):
+	def update_demand_items(self, stock_items: Dict[str, Dict], remove=False):
 
 		client = self.get("client")
 		demand = frappe.get_last_doc(
@@ -104,9 +104,32 @@ class GeslogMaterialRequest(Document):
 		for stock_item in stock_items:
 			for item in demand.get("items") or []:
 				if item.item_code == stock_item:
-					item.qty = flt(item.qty - stock_items.get(item.item_code))
-
+					if remove:
+						item.qty = flt(
+							item.qty - stock_items.get(item.item_code))
+					else:
+						item.qty = flt(
+							item.qty + stock_items.get(item.item_code))
 		demand.save()
+
+	def return_items(self, items_to_return):
+
+		if self.get("associated_to") == "Task":
+			self.update_task_items(items_to_return)
+		else:
+			self.update_demand_items(items_to_return)
+
+		for req_item in self.get("items") or []:
+			if req_item.item_code in items_to_return:
+				returned_qty = items_to_return.get(req_item.item_code, 0)
+
+				req_item.transferred_qty -= returned_qty
+
+				if req_item.transferred_qty < 0:
+					self.transferred_qty = 0
+
+		self.update_children()
+		self.save()
 
 	def update_stock(self, stock_entry):
 
@@ -119,9 +142,9 @@ class GeslogMaterialRequest(Document):
 			items_in_stock[item.item_code] = item_qty
 
 		if self.get("associated_to") == "Task":
-			self.update_task_items(items_in_stock)
+			self.update_task_items(items_in_stock, remove=True)
 		else:
-			self.update_demand_items(items_in_stock)
+			self.update_demand_items(items_in_stock, remove=True)
 
 		for req_item in self.get("items") or []:
 			if req_item.item_code in items_in_stock:
