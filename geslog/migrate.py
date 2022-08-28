@@ -1,6 +1,5 @@
-""" Setup Workspaces Patch Module """
 
-from ..overrides.workspace.workspace import CustomWorkspace
+from .overrides.workspace.workspace import CustomWorkspace
 
 
 def setup_workspaces():
@@ -18,6 +17,7 @@ def setup_workspaces():
 	CustomWorkspace.delete_workspaces(excepts_docs=excepts_docs)
 
 
-def execute():
-	""" Setup WorkSpaces Patch Execute """
+def after_migrate():
+	""" Execute After migrations are done """
+
 	setup_workspaces()

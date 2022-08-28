@@ -46,6 +46,8 @@ doctype_js = {
 # Home Pages
 # ----------
 
+after_migrate = "geslog.migrate.after_migrate"
+
 # application home page (will override Website Settings)
 # home_page = "login"
 
