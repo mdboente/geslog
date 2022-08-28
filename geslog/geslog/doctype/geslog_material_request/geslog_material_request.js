@@ -144,22 +144,38 @@ frappe.ui.form.on('Geslog Material Request', {
 
     },
 
+    get_reserved_items(){
+        let reserved_items = [];
+
+        if(cur_frm.demand){
+            reserved_items = cur_frm.demand.items.map(i => i.item_code)
+
+        }else if(cur_frm.task && cur_frm.task.use_reservation){
+            reserved_items = cur_frm.task.items.map(i => i.item_code);
+        }
+
+        return reserved_items
+    },
+
     setup_items_field(frm){
 
-        if(frm.task && frm.task.limit_reservation){
-            frm.set_query("item_code", "items", () => {
-                let reserved_items = frm.task.items.map(i => i.item_code)
-                let selected_items = frm.doc.items.filter(i => i.item_code).map(i => {return i.item_code})
-                return {
-                    filters: {
-                        item_code: ["in", [...reserved_items].filter(i => !selected_items.includes(i))]
-                    }
-                }
-            })
+        frm.set_query("item_code", "items", () => {
 
-        }else{
-             geslog.form.select_not_checked_links(frm, "items", "item_code")
-        }
+            let query = {}
+
+            let reserved_items = frm.events.get_reserved_items();
+            let selected_items = frm.doc.items.filter(i => i.item_code).map(i => {return  i.item_code})
+
+
+            if(reserved_items.length > 0){
+                query["filters"] = {
+                    item_code: ["in", [...reserved_items].filter(i => !selected_items.includes(i))]
+                }
+            }
+
+            return query
+        })
+
     },
 
     cost_center(frm){
@@ -221,6 +237,10 @@ frappe.ui.form.on('Geslog Material Request', {
         setup_cost_center_field(frm)
         setup_task_field(frm)
 
+        frm.events.get_demand().then(() => {
+            frm.events.setup_items_field(frm)
+        })
+
         let client = frm.doc.client;
 	    if(client){
 	        frappe.db.get_value("Client", {name: client}, "abbr")
@@ -228,6 +248,25 @@ frappe.ui.form.on('Geslog Material Request', {
                     frm.set_value("client_abbr", value.message.abbr)
                 })
         }
+    },
+
+    get_demand(){
+        let client = cur_frm.doc.client;
+
+        if(cur_frm.demand){
+            return cur_frm.demand
+        }
+
+        return frappe.db.get_value("Client", {name: client}, "requests_on_demand")
+            .then(value => {
+                if(value.message.requests_on_demand){
+                    frappe.db.get_doc("Demand", null, {"client": client})
+                        .then( demand => {
+                            cur_frm.demand = demand
+                            return demand
+                        })
+                }
+            })
     },
 
     default_source_warehouse(frm){
@@ -320,13 +359,6 @@ frappe.ui.form.on("Geslog Material Request Item", {
 
     qty(frm, cdt, cdn) {
         let item = frappe.get_doc(cdt, cdn);
-        if(frm.task && frm.task.limit_reservation) {
-            const reserved_item = frm.task.items.find(i => i.item_code === item.item_code)
-            item.qty = reserved_item.amount
-            if(reserved_item.amount < item.qty){
-                frappe.throw(__("Row {}: {} cannot be greater than reserved amount in the {} Task ", [item.idx, item.description, frm.doc.task]))
-            }
-        }
         frm.events.get_item_details(frm, item)
     },
 
