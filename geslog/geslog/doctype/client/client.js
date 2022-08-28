@@ -25,7 +25,7 @@ frappe.ui.form.on('Client', {
 });
 
 frappe.ui.form.on("Client Warehouse", {
-    warehouse_add(frm){
+    form_render(frm){
         geslog.form.select_not_checked_links(frm, "warehouse", "warehouse")
     }
 })
