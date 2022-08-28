@@ -68,7 +68,7 @@ def make_stock_entry(source_name, target_doc=None):
 		target.transfer_qty = 0
 		target.allow_zero_valuation_rate = 1
 		target.conversion_factor = 1
-		target.t_warehouse = obj.source_warehouse
+		target.t_warehouse = obj.target_warehouse
 
 	def set_missing_values(source, target):
 		target.request_party = "Geslog Material Return"
