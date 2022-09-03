@@ -9,8 +9,11 @@ function setup_year_field(frm){
 
 
 frappe.ui.form.on('Geslog Task', {
-    setup(frm){
+    refresh(frm){
        setup_year_field(frm)
+    },
+    use_reservation(frm){
+        frm.set_value("limit_reservation", frm.doc.use_reservation)
     }
 });
 

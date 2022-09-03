@@ -79,6 +79,7 @@
    "label": "Use Reservation"
   },
   {
+   "depends_on": "use_reservation",
    "fieldname": "section_break_9",
    "fieldtype": "Section Break",
    "label": "Items"
@@ -92,7 +93,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-25 15:58:42.124816",
+ "modified": "2022-08-28 03:20:52.308530",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Task",

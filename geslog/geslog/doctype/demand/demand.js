@@ -7,7 +7,7 @@ function setup_year_field(frm){
 }
 
 frappe.ui.form.on('Demand', {
-	setup(frm){
+	refresh(frm){
        setup_year_field(frm)
     }
 });

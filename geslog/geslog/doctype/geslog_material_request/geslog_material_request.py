@@ -1,11 +1,35 @@
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
 from frappe.utils import flt
 from frappe.model.mapper import get_mapped_doc
+from typing import Dict
 
 
 class GeslogMaterialRequest(Document):
+
+	def validate(self):
+		self.validate_items()
+
+	def validate_items(self):
+		reserved_items = self.get_reserved_items()
+		for item in self.get("items"):
+			for reserved_item in reserved_items:
+				if item.qty > reserved_item.qty:
+					frappe.throw(
+						_("Row {0}: {1} cannot exceed the reserved qty ")
+						.format(item.idx, item.description))
+
+	def get_reserved_items(self):
+
+		if self.get("associated_to") == "Task":
+			task = frappe.get_doc("Geslog Task", self.get("task"))
+			return task.items
+		else:
+			client = self.get("client")
+			demand = frappe.get_last_doc("Demand", {"client": client})
+			return demand.items
 
 	@frappe.whitelist()
 	def get_warehouses_operations(self, operation: str = None):
@@ -57,6 +81,56 @@ class GeslogMaterialRequest(Document):
 
 		return assigned_items
 
+	def update_task_items(self, items: Dict[str, str], remove=True):
+
+		task = frappe.get_doc("Geslog Task", self.get("task"))
+
+		for item_in_stock in items:
+			for item in task.get("items"):
+				if item.item_code == item_in_stock:
+					if remove:
+						item.qty -= items.get(item.item_code)
+					else:
+						item.qty += items.get(item.item_code)
+
+		task.save()
+
+	def update_demand_items(self, stock_items: Dict[str, Dict], remove=False):
+
+		client = self.get("client")
+		demand = frappe.get_last_doc(
+			"Demand", filters={"client": client})
+
+		for stock_item in stock_items:
+			for item in demand.get("items") or []:
+				if item.item_code == stock_item:
+					if remove:
+						item.qty = flt(
+							item.qty - stock_items.get(item.item_code))
+					else:
+						item.qty = flt(
+							item.qty + stock_items.get(item.item_code))
+		demand.save()
+
+	def return_items(self, items_to_return):
+
+		if self.get("associated_to") == "Task":
+			self.update_task_items(items_to_return)
+		else:
+			self.update_demand_items(items_to_return)
+
+		for req_item in self.get("items") or []:
+			if req_item.item_code in items_to_return:
+				returned_qty = items_to_return.get(req_item.item_code, 0)
+
+				req_item.transferred_qty -= returned_qty
+
+				if req_item.transferred_qty < 0:
+					self.transferred_qty = 0
+
+		self.update_children()
+		self.save()
+
 	def update_stock(self, stock_entry):
 
 		status = "Transferred"
@@ -66,6 +140,11 @@ class GeslogMaterialRequest(Document):
 			item_qty = items_in_stock.get(item.item_code, 0)
 			item_qty = item_qty + item.qty
 			items_in_stock[item.item_code] = item_qty
+
+		if self.get("associated_to") == "Task":
+			self.update_task_items(items_in_stock, remove=True)
+		else:
+			self.update_demand_items(items_in_stock, remove=True)
 
 		for req_item in self.get("items") or []:
 			if req_item.item_code in items_in_stock:

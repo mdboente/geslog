@@ -35,6 +35,7 @@
    "default": "0",
    "fieldname": "requests_on_demand",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Requests are based on demand",
    "search_index": 1
   },
@@ -159,7 +160,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-08-08 00:03:25.907988",
+ "modified": "2022-08-28 03:28:14.266965",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Client",
