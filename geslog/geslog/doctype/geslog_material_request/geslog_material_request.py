@@ -32,36 +32,6 @@ class GeslogMaterialRequest(Document):
 			return demand.items
 
 	@frappe.whitelist()
-	def get_warehouses_operations(self, operation: str = None):
-		client = self.get("client")
-		operations = {"Request": [], "Transfer": [], "All": []}
-		default_warehouse = frappe.db.get_single_value(
-			"Geslog Settings", "default_warehouse")
-		if client:
-			warehouses = frappe.get_list(
-				"Client Warehouse", {"parent": client}, ["warehouse", "operation"])
-
-			warehouses.append(
-				frappe._dict(warehouse=default_warehouse, operation="All"))
-
-			for warehouse in warehouses or []:
-				opes = {warehouse.operation}
-
-				if warehouse.operation == "All":
-					opes.update(operations.keys())
-
-				for ope in opes:
-					operations[ope].append(warehouse.warehouse)
-
-		if operation:
-			return {operation: operations.get(operation, [])}
-
-		return {
-			"default": default_warehouse,
-			"operations": operations
-		}
-
-	@frappe.whitelist()
 	def get_assigned_items(self):
 		entries = frappe.get_list("Stock Entry", {
 			"docstatus": 1,
@@ -173,6 +143,7 @@ def make_stock_entry(source_name, target_doc=None):
 		qty = flt(flt(obj.stock_qty) - flt(obj.transferred_qty)) \
 			if flt(obj.stock_qty) > flt(obj.transferred_qty) else 0
 
+		raise TypeError(qty, )
 		target.qty = qty
 		target.transfer_qty = qty
 		target.allow_zero_valuation_rate = 1
