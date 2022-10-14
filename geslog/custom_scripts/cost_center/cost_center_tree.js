@@ -29,16 +29,30 @@ frappe.treeview_settings["Cost Center"] = {
 		    fieldtype:'Data',
             fieldname:'cost_center_number',
             label:__('Cost Center Number'),
-			description: __("Number of new Cost Center, it will be included in the cost center name as a prefix")
+			description: __("Number of new Cost Center, it will be included in the cost center name as a prefix"),
+			reqd: true
 		},
         {
             fieldtype: "Link",
             fieldname: "expense_account",
             options: "Account",
             label: __("Expense Account"),
+			reqd: true,
             get_query: function(txt){
                 return { filters: {account_type: "Expense Account"}}}
-        }
+        },
+		{
+			fieldtype: "Link",
+			fieldname: "client",
+			label: __("Client"),
+			options: "Client",
+			reqd: true
+		},
+		{
+			fieldtype: "Check",
+			fieldname: "public",
+			label: __("Public")
+		},
 	],
 	ignore_fields:["parent_cost_center"],
 
