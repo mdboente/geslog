@@ -79,23 +79,29 @@ function setup_client_field(frm){
 
 function warehouse_permissions(frm){
 
-    frm.call("get_warehouses_operations")
-        .then(resp => {
-            const transfer_operation = resp.message.operations[frm.client_operations.TRANSFER];
-            const request_operation = resp.message.operations[frm.client_operations.REQUEST];
+    if(!frm.doc.client) return ;
 
-            let transfer_query_filters = () => {return {filters: { is_group: false, name: ["in", transfer_operation] }}};
-            let request_query_filters = () => {return {filters: {is_group: false, name: ["in", request_operation] }}};
+    frappe.call({
+        method:"geslog.geslog.doctype.client.client.get_warehouses_operations",
+        args: {
+            client: frm.doc.client
+        }
+    }).then(resp => {
+        const transfer_operation = resp.message.operations[frm.client_operations.TRANSFER];
+        const request_operation = resp.message.operations[frm.client_operations.REQUEST];
 
-            if(!frm.doc.default_source_warehouse){
-                frm.set_value("default_source_warehouse", resp.message.default)
-            }
+        let transfer_query_filters = () => {return {filters: { is_group: false, name: ["in", transfer_operation] }}};
+        let request_query_filters = () => {return {filters: {is_group: false, name: ["in", request_operation] }}};
 
-            frm.set_query("default_source_warehouse", request_query_filters);
-            frm.set_query("source_warehouse", "items", request_query_filters);
-            frm.set_query("default_target_warehouse", transfer_query_filters);
-            frm.set_query("target_warehouse", "items", transfer_query_filters);
-        });
+        if(!frm.doc.default_source_warehouse){
+            frm.set_value("default_source_warehouse", resp.message.default)
+        }
+
+        frm.set_query("default_source_warehouse", request_query_filters);
+        frm.set_query("source_warehouse", "items", request_query_filters);
+        frm.set_query("default_target_warehouse", transfer_query_filters);
+        frm.set_query("target_warehouse", "items", transfer_query_filters);
+    });
 }
 
 
@@ -321,7 +327,6 @@ frappe.ui.form.on('Geslog Material Request', {
 					buying_price_list: frappe.defaults.get_default('buying_price_list'),
 					currency: frappe.defaults.get_default('Currency'),
 					name: frm.doc.name,
-					qty: item.qty || 1,
 					stock_qty: item.qty || 1,
 					company: frappe.defaults.get_default('company'),
 					conversion_rate: 1,

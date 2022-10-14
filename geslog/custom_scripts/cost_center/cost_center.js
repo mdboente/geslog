@@ -2,6 +2,9 @@
 
 frappe.ui.form.on("Cost Center", {
 	setup(frm){
+
+		frm.dashboard.parent.remove()
+
 		frm.set_query("expense_account", () => {
 			return {
 				filters : {

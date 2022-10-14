@@ -40,7 +40,9 @@ doctype_js = {
 	"Material Request": "custom_scripts/material_request/material_request.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
-# doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
+doctype_tree_js = {
+	"Cost Center" : "custom_scripts/cost_center/cost_center_tree.js"
+}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
 # Home Pages

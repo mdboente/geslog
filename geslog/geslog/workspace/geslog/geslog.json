@@ -120,7 +120,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-08-08 00:42:39.244517",
+ "modified": "2022-10-02 14:45:16.143955",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog",
@@ -143,6 +143,15 @@
    "format": "{} Pending",
    "label": "Material Return",
    "link_to": "Geslog Material Return",
+   "stats_filter": "{\n    \"status\": \"Pending\"\n}",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "format": "{} Pending",
+   "label": "Transfer Request",
+   "link_to": "Transfer Request",
    "stats_filter": "{\n    \"status\": \"Pending\"\n}",
    "type": "DocType"
   },
