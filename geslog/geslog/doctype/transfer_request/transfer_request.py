@@ -13,6 +13,13 @@ class TransferRequest(Document):
 	def validate(self):
 		self.validate_warehouses()
 
+	def after_insert(self):
+		name = self.name
+		cur_id = name.split("-")[1]
+		next_id = str(int(cur_id) + 1).zfill(6)
+		frappe.set_value("Client", self.get("client"), "next_transfer_number", next_id)
+
+
 	def validate_warehouses(self):
 		for item in self.get("items") or []:
 			if item.get("source_warehouse") == item.get("target_warehouse"):
