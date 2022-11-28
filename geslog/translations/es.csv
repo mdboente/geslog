@@ -1,6 +1,5 @@
 Clients,Clientes,
 is Associated with, es Asociado a
-Item Group, Elemento de Gasto
 Return of Materials, Devolución de Materiales
 Transfer between Warehouses, Transferencias entre Almacenes
 Material Transfer, Solicitud de Materiales
@@ -58,4 +57,6 @@ Limit the Reservation, Limitar a lo Reservado
 Amount, Cantidad
 Reservation, Reservación
 SAP-MM Code, Código SAP-MM
+Secondary, Secundario
+Transfer Request, Solicitud de Transferencia
 
