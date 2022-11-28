@@ -1,5 +1,10 @@
 
 frappe.ui.form.on('Client', {
+
+    refresh(frm){
+         geslog.form.select_not_checked_links(frm, "warehouse", "warehouse")
+    },
+
 	access_to_all_warehouses_with_all_operations(frm){
 	    frm.doc.warehouse = []
         if(frm.doc.access_to_all_warehouses_with_all_operations){
@@ -23,9 +28,3 @@ frappe.ui.form.on('Client', {
         frm.refresh_field("warehouse")
     }
 });
-
-frappe.ui.form.on("Client Warehouse", {
-    form_render(frm){
-        geslog.form.select_not_checked_links(frm, "warehouse", "warehouse")
-    }
-})
