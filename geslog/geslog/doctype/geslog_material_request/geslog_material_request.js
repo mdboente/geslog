@@ -129,6 +129,8 @@ frappe.ui.form.on('Geslog Material Request', {
             frm.page.set_indicator(frm.doc.status, status_indicator_color[frm.doc.status])
         }
 
+        frappe.db.get_single_value("Geslog Settings", "default_warehouse").then(value => { frm.set_value("default_source_warehouse", value) } )
+
         warehouse_permissions(frm)
         setup_expense_account(frm)
         setup_task_field(frm)
