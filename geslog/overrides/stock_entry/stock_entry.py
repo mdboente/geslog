@@ -12,3 +12,5 @@ class CustomStockEntry(StockEntry):
 		if request_party and request_parent:
 			request = frappe.get_doc(request_party, request_parent)
 			request.update_stock(self)
+
+		super().on_submit()
