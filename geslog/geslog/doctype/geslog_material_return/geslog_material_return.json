@@ -72,9 +72,8 @@
   },
   {
    "fieldname": "request_by",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Request by",
-   "options": "Employee",
    "reqd": 1
   },
   {
@@ -83,9 +82,8 @@
   },
   {
    "fieldname": "approve_by",
-   "fieldtype": "Link",
-   "label": "Approve by",
-   "options": "Employee"
+   "fieldtype": "Data",
+   "label": "Approve by"
   },
   {
    "fieldname": "sap_code",
@@ -140,7 +138,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-08-07 17:21:34.708610",
+ "modified": "2022-11-28 10:31:02.507285",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Material Return",

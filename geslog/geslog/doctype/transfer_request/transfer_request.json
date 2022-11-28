@@ -78,15 +78,13 @@
   },
   {
    "fieldname": "requester",
-   "fieldtype": "Link",
-   "label": "Requester",
-   "options": "Employee"
+   "fieldtype": "Data",
+   "label": "Requester"
   },
   {
    "fieldname": "approver",
-   "fieldtype": "Link",
-   "label": "Approver",
-   "options": "Employee"
+   "fieldtype": "Data",
+   "label": "Approver"
   },
   {
    "fieldname": "amended_from",
@@ -141,7 +139,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-10-02 15:17:43.251595",
+ "modified": "2022-11-28 10:36:46.129438",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Transfer Request",

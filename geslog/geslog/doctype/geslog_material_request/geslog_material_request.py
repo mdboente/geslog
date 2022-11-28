@@ -149,7 +149,6 @@ def make_stock_entry(source_name, target_doc=None):
 		qty = flt(flt(obj.stock_qty) - flt(obj.transferred_qty)) \
 			if flt(obj.stock_qty) > flt(obj.transferred_qty) else 0
 
-		raise TypeError(qty, )
 		target.qty = qty
 		target.transfer_qty = qty
 		target.allow_zero_valuation_rate = 1

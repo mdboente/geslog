@@ -143,20 +143,14 @@
   },
   {
    "fieldname": "request_by",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Request by",
-   "options": "Employee",
    "reqd": 1
   },
   {
-   "fieldname": "column_break_19",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "approve_by",
-   "fieldtype": "Link",
-   "label": "Approve by",
-   "options": "Employee"
+   "fieldtype": "Data",
+   "label": "Approve by"
   },
   {
    "fieldname": "total_amount",
@@ -211,12 +205,16 @@
    "options": "\nDraft\nSubmitted\nPending\nTransferred",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-08-07 23:16:32.248658",
+ "modified": "2022-11-28 10:32:29.668837",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Material Request",

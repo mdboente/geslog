@@ -17,7 +17,8 @@ frappe.ui.form.on('Transfer Request', {
                 frm.add_custom_button(__("Stock Entry"),
                     () => frm.events.make_stock_entry(frm), __('Create'));
         }
-        frm.events.get_default_client()
+
+        if (frm.is_new()) frm.events.get_default_client()
 
     },
     get_default_client(){
