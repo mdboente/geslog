@@ -364,11 +364,6 @@ frappe.ui.form.on("Geslog Material Request Item", {
         }
     },
 
-    qty(frm, cdt, cdn) {
-        let item = frappe.get_doc(cdt, cdn);
-        frm.events.get_item_details(frm, item)
-    },
-
     source_warehouse(frm, cdt, cdn){
         let item = frappe.get_doc(cdt, cdn);
         frm.events.get_item_details(frm, item)
