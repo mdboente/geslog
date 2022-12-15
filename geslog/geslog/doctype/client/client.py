@@ -18,9 +18,6 @@ def get_warehouses_operations(client, operation: str = None):
 			"Client Warehouse", {"parent": client},
 			["warehouse", "operation"])
 
-		warehouses.append(
-			frappe._dict(warehouse=default_warehouse, operation="All"))
-
 		for warehouse in warehouses or []:
 			opes = {warehouse.operation}
 
