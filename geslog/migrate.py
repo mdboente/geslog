@@ -6,6 +6,7 @@ def setup_workspaces():
 	""" Delete unnecessary workspaces """
 
 	excepts_docs = [
+     	"Gesllog Settings",
 		"Geslog",
 		"Users",
 		"Settings",
