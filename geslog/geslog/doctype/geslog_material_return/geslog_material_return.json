@@ -23,6 +23,8 @@
   "request_by",
   "column_break_9",
   "approve_by",
+  "section_break_17",
+  "observaciones",
   "amended_from"
  ],
  "fields": [
@@ -133,12 +135,21 @@
    "fieldtype": "Data",
    "label": "Client Abbr",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_17",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "observaciones",
+   "fieldtype": "Long Text",
+   "label": "Observaciones"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-11-28 10:31:02.507285",
+ "modified": "2022-12-15 15:32:58.660941",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Material Return",

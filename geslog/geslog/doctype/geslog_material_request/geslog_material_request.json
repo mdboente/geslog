@@ -34,6 +34,8 @@
   "request_by",
   "column_break_19",
   "approve_by",
+  "section_break_28",
+  "observaciones",
   "amended_from"
  ],
  "fields": [
@@ -209,12 +211,21 @@
   {
    "fieldname": "column_break_19",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_28",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "observaciones",
+   "fieldtype": "Long Text",
+   "label": "Observaciones"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-11-28 10:32:29.668837",
+ "modified": "2022-12-15 15:32:29.331885",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Geslog Material Request",
