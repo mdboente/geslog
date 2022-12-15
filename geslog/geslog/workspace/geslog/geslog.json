@@ -35,7 +35,16 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Material Request",
-   "link_to": "Material Request",
+   "link_to": "Geslog Material Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transfer Request",
+   "link_to": "Transfer Request",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -118,10 +127,28 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Item Group",
+   "link_to": "Item Group",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "UOM",
+   "link_to": "UOM",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2022-10-02 14:45:16.143955",
- "modified_by": "Administrator",
+ "modified": "2022-12-15 14:34:07.373228",
+ "modified_by": "iram.morales@avangenio.com",
  "module": "Geslog",
  "name": "Geslog",
  "owner": "Administrator",
