@@ -91,7 +91,7 @@ class GeslogMaterialRequest(Document):
 	def return_items(self, items_to_return):
 
 		if self.get("associated_to") == "Task":
-			self.update_task_items(items_to_return)
+			self.update_task_items(items_to_return, remove=False)
 		else:
 			self.update_demand_items(items_to_return)
 
