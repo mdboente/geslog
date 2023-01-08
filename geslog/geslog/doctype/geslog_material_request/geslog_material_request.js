@@ -219,12 +219,11 @@ frappe.ui.form.on('Geslog Material Request', {
 
                     frm.doc.items = []
                     doc.items.forEach(item => {
-
                         let child_item = frm.add_child("items", {
                             item_code: item.item_code,
                             description: item.description,
                             uom: item.uom,
-                            qty: item.amount,
+                            qty: item.qty,
                             source_warehouse: frm.doc.default_source_warehouse
                         })
 
