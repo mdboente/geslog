@@ -12,12 +12,6 @@ class GeslogMaterialRequest(Document):
 	def validate(self):
 		self.validate_items()
 
-	def after_insert(self):
-		name = self.name
-		cur_id = name.split("-")[1]
-		next_id = str(int(cur_id) + 1).zfill(6)
-		frappe.set_value("Client", self.get("client"), "next_request_number", next_id)
-
 	def validate_items(self):
 		reserved_items = self.get_reserved_items()
 		for item in self.get("items"):
