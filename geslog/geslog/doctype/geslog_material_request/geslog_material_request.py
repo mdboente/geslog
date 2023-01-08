@@ -146,8 +146,8 @@ class GeslogMaterialRequest(Document):
 def make_stock_entry(source_name, target_doc=None):
 	def update_item(obj, target, source_parent):
 
-		qty = flt(flt(obj.stock_qty) - flt(obj.transferred_qty)) \
-			if flt(obj.stock_qty) > flt(obj.transferred_qty) else 0
+		qty = flt(flt(obj.qty) - flt(obj.transferred_qty)) \
+			if flt(obj.qty) > flt(obj.transferred_qty) else 0
 
 		target.qty = qty
 		target.transfer_qty = qty
