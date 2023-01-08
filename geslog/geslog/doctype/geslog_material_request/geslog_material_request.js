@@ -261,10 +261,6 @@ frappe.ui.form.on('Geslog Material Request', {
     get_demand(){
         let client = cur_frm.doc.client;
 
-        if(cur_frm.demand){
-            return cur_frm.demand
-        }
-
         return frappe.db.get_value("Client", {name: client}, "requests_on_demand")
             .then(value => {
                 if(value.message.requests_on_demand){
