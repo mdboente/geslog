@@ -14,8 +14,8 @@
  "is_standard": 1,
  "label": "Gesllog Settings",
  "links": [],
- "modified": "2022-12-15 16:38:30.275401",
- "modified_by": "iram.morales@avangenio.com",
+ "modified": "2023-01-08 23:48:03.840513",
+ "modified_by": "maura.elena@etecsa.cu",
  "module": "Geslog",
  "name": "Gesllog Settings",
  "owner": "iram.morales@avangenio.com",
@@ -26,6 +26,12 @@
    "doc_view": "",
    "label": "Geslog Settings",
    "link_to": "Geslog Settings",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Fiscal Year",
+   "link_to": "Fiscal Year",
    "type": "DocType"
   }
  ]
