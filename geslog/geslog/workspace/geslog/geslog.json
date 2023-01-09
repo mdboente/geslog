@@ -1,6 +1,10 @@
 {
  "category": "Modules",
- "charts": [],
+ "charts": [
+  {
+   "chart_name": "Material Request"
+  }
+ ],
  "creation": "2022-07-20 08:50:29.841027",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -147,7 +151,7 @@
    "type": "Link"
   }
  ],
- "modified": "2022-12-15 14:34:07.373228",
+ "modified": "2023-01-08 15:27:18.462907",
  "modified_by": "iram.morales@avangenio.com",
  "module": "Geslog",
  "name": "Geslog",
