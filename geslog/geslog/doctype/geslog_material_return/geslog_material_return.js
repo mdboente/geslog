@@ -15,9 +15,9 @@ function setup_request_by_field(frm){
     if(!frm.doc.request_by){
         frappe.db.get_value("Employee",
             {user_id: frappe.session.user_email},
-            "name"
+            "employee_name"
         ).then(value => {
-            frm.set_value("request_by", value.message.name)
+            frm.set_value("request_by", value.message.employee_name)
         })
     }
 }

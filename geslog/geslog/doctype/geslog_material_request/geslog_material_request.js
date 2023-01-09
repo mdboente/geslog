@@ -49,7 +49,7 @@ function setup_client_field(frm){
                 let employee = employees[0];
 
                 if(employee){
-                    frm.set_value("request_by", employee.name);
+                    frm.set_value("request_by", employee.employee_name);
 
                     if(!employee.client){
                         frappe.msgprint({

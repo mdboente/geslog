@@ -22,10 +22,10 @@ frappe.ui.form.on('Transfer Request', {
 
     },
     get_default_client(){
-        frappe.db.get_value("Employee", {"user_id": frappe.session.user}, ["client", "name"],
+        frappe.db.get_value("Employee", {"user_id": frappe.session.user}, ["client", "name", "employee_name"],
             value => {
                 cur_frm.set_value("client", value.client)
-                cur_frm.set_value("requester", value.name)
+                cur_frm.set_value("requester", value.employee_name)
             })
     },
     make_stock_entry: function(frm) {
