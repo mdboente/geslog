@@ -64,3 +64,6 @@ Items, Productos
 Requester, Solicita
 Supervisor, Autoriza
 Geslog Settings, Configuraciones del Geslog
+Row {0}: {1} cannot exceed the reserved qty, Fila {0}: {1} no puede exceder la cantidad reservada
+Request Parent,Solicitud
+Request Party,Tipo de Solicitud
