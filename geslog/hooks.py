@@ -41,7 +41,8 @@ doctype_js = {
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 doctype_tree_js = {
-	"Cost Center" : "custom_scripts/cost_center/cost_center_tree.js"
+	"Cost Center" : "custom_scripts/cost_center/cost_center_tree.js",
+	"Stock Entry": "custom_scripts/stock_entry/stock_entry.js"
 }
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
