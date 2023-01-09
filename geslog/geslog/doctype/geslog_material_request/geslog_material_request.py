@@ -14,19 +14,23 @@ class GeslogMaterialRequest(Document):
 
 	def validate_items(self):
 		reserved_items = self.get_reserved_items()
-		for item in self.get("items"):
-			for reserved_item in reserved_items:
-				if item.qty > reserved_item.qty:
-					frappe.throw(
-						_("Row {0}: {1} cannot exceed the reserved qty ")
-						.format(item.idx, item.description))
+
+		if reserved_items:
+			for item in self.get("items"):
+				for reserved_item in reserved_items:
+					if item.qty > reserved_item.qty:
+						frappe.throw(
+							_("Row {0}: {1} cannot exceed the reserved qty ")
+							.format(item.idx, item.description))
 
 	def get_reserved_items(self):
+
+		client = frappe.get_doc("Client", self.get("client"))
 
 		if self.get("associated_to") == "Task":
 			task = frappe.get_doc("Geslog Task", self.get("task"))
 			return task.items
-		else:
+		elif client.requests_on_demand:
 			client = self.get("client")
 			demand = frappe.get_last_doc("Demand", {"client": client})
 			return demand.items
