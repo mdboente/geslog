@@ -3,6 +3,12 @@
  "charts": [
   {
    "chart_name": "Material Request"
+  },
+  {
+   "chart_name": "Material Return"
+  },
+  {
+   "chart_name": "Transfer Request"
   }
  ],
  "creation": "2022-07-20 08:50:29.841027",
@@ -151,8 +157,8 @@
    "type": "Link"
   }
  ],
- "modified": "2023-01-08 15:27:18.462907",
- "modified_by": "iram.morales@avangenio.com",
+ "modified": "2023-01-09 07:52:12.953443",
+ "modified_by": "maura.elena@etecsa.cu",
  "module": "Geslog",
  "name": "Geslog",
  "owner": "Administrator",
@@ -165,7 +171,7 @@
    "format": "{} pending",
    "label": "Material Request",
    "link_to": "Geslog Material Request",
-   "stats_filter": "{\n    \"status\": \"Pending\"\n}",
+   "stats_filter": "",
    "type": "DocType"
   },
   {
@@ -174,7 +180,7 @@
    "format": "{} Pending",
    "label": "Material Return",
    "link_to": "Geslog Material Return",
-   "stats_filter": "{\n    \"status\": \"Pending\"\n}",
+   "stats_filter": "",
    "type": "DocType"
   },
   {
@@ -183,7 +189,7 @@
    "format": "{} Pending",
    "label": "Transfer Request",
    "link_to": "Transfer Request",
-   "stats_filter": "{\n    \"status\": \"Pending\"\n}",
+   "stats_filter": "",
    "type": "DocType"
   },
   {
@@ -205,6 +211,12 @@
    "doc_view": "List",
    "label": "Item",
    "link_to": "Item",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Employee",
+   "link_to": "Employee",
    "type": "DocType"
   }
  ]

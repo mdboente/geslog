@@ -14,7 +14,7 @@
  "is_standard": 1,
  "label": "Gesllog Settings",
  "links": [],
- "modified": "2023-01-08 23:48:03.840513",
+ "modified": "2023-01-09 00:20:48.613804",
  "modified_by": "maura.elena@etecsa.cu",
  "module": "Geslog",
  "name": "Gesllog Settings",
@@ -32,6 +32,12 @@
    "doc_view": "List",
    "label": "Fiscal Year",
    "link_to": "Fiscal Year",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Employee",
+   "link_to": "Employee",
    "type": "DocType"
   }
  ]
