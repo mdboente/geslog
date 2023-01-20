@@ -56,7 +56,7 @@ Reservation Number, Número de Reserva
 Limit the Reservation, Limitar a lo Reservado
 Amount, Cantidad
 Reservation, Reservación
-SAP-MM Code, Código SAP-MM
+SAP-MM Code, Vale SAP-MM
 Secondary, Secundario
 Transfer Request, Solicitud de Transferencia
 Items Transfer to Investiments, Transferencia de productos para inversiones
@@ -67,3 +67,4 @@ Geslog Settings, Configuraciones del Geslog
 Row {0}: {1} cannot exceed the reserved qty, Fila {0}: {1} no puede exceder la cantidad reservada
 Request Parent,Solicitud
 Request Party,Tipo de Solicitud
+View Request,Ver Solicitud

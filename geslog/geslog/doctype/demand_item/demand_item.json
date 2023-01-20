@@ -10,7 +10,8 @@
   "description",
   "uom",
   "price",
-  "qty"
+  "qty",
+  "real_qty"
  ],
  "fields": [
   {
@@ -49,12 +50,19 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Qty"
+  },
+  {
+   "fetch_from": "doc.qty",
+   "fieldname": "real_qty",
+   "fieldtype": "Float",
+   "label": "Real Qty",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-01-08 04:52:21.886912",
+ "modified": "2023-01-19 22:59:32.825402",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Demand Item",

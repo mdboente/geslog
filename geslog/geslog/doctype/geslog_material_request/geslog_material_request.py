@@ -1,4 +1,3 @@
-
 import frappe
 from frappe import _
 from frappe.model.document import Document
@@ -18,10 +17,11 @@ class GeslogMaterialRequest(Document):
 		if reserved_items:
 			for item in self.get("items"):
 				for reserved_item in reserved_items:
-					if item.qty > reserved_item.qty:
+					if reserved_item.item_code == item.item_code \
+							and item.qty > reserved_item.qty:
 						frappe.throw(
 							_("Row {0}: {1} cannot exceed the reserved qty ")
-							.format(item.idx, item.description))
+								.format(item.idx, item.description))
 
 	def get_reserved_items(self):
 
@@ -143,7 +143,6 @@ class GeslogMaterialRequest(Document):
 @frappe.whitelist()
 def make_stock_entry(source_name, target_doc=None):
 	def update_item(obj, target, source_parent):
-
 		qty = flt(flt(obj.qty) - flt(obj.transferred_qty)) \
 			if flt(obj.qty) > flt(obj.transferred_qty) else 0
 
@@ -179,9 +178,7 @@ def make_stock_entry(source_name, target_doc=None):
 
 @frappe.whitelist()
 def make_material_return(source_name, target_doc=None):
-
 	def update_item(obj, target, source_parent):
-
 		target.status = " "
 		target.returned_qty = 0
 
@@ -206,3 +203,25 @@ def make_material_return(source_name, target_doc=None):
 
 	return doclist
 
+
+@frappe.whitelist()
+def get_cost_centers(doctype, txt, searchfield, start, page_length, filters,
+                     as_dict=False):
+	sql = f"""
+		SELECT
+			name
+		FROM `tabCost Center`
+	"""
+
+	conditions = " AND ".join(
+		[f"{field}={frappe.db.escape(filters.get(field))}" for field in
+		 filters or {}])
+
+	if conditions:
+		conditions = "( " + conditions + " ) OR "
+
+	conditions += "public=true"
+
+	sql += (" WHERE " + conditions)
+
+	return frappe.db.sql(sql)

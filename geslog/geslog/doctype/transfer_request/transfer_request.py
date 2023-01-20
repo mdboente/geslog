@@ -29,6 +29,12 @@ class TransferRequest(Document):
 			if not item.target_warehouse:
 				item.target_warehouse = self.get("to_warehouse")
 
+	def reduce_from_task(self, item, qty):
+
+		item = frappe.get_last_doc("Geslog Task Items", {"parent": self.get("task"), "item_code": item})
+		item.qty -= qty | 0
+		item.save()
+
 	def update_stock(self, stock_entry):
 		status = "Transferred"
 		items_in_stock = {}
@@ -43,6 +49,9 @@ class TransferRequest(Document):
 				stock_qty = items_in_stock.get(req_item.item_code, 0)
 
 				req_item.transferred_qty += stock_qty
+
+				if self.get("items_transfer_to_investiments"):
+					self.reduce_from_task(req_item.item_code, stock_qty)
 
 				if req_item.transferred_qty < 0:
 					self.transferred_qty = 0

@@ -10,12 +10,19 @@ function calculate_total_amount(frm){
 
 function setup_cost_center_field(){
     cur_frm.set_query("cost_center", () => {
-        let client = cur_frm.doc.client;
-        let expense_account = cur_frm.doc.expense_account;
+
+        let {client, expense_account} = cur_frm.doc;
+
         let filters = {};
+
         if(client){filters["client"] = client}
         if(expense_account){filters["expense_account"] = expense_account};
-        return {"filters": filters};
+        return {
+            doctype: "Cost Center",
+            doc: cur_frm.doc,
+            filters: filters,
+            query: "geslog.geslog.doctype.geslog_material_request.geslog_material_request.get_cost_centers"
+        };
     })
 }
 
@@ -357,6 +364,12 @@ frappe.ui.form.on("Geslog Material Request Item", {
         if(frm.task && frm.task.limit_reservation){
             item_code.qty = frm.task.items.find(i => i.item_code === item.item_code)
         }
+    },
+
+    qty(frm, dt, dn){
+        let item = frappe.get_doc(dt, dn);
+        item.amount = item.price * item.qty
+        calculate_total_amount(frm)
     },
 
     source_warehouse(frm, cdt, cdn){

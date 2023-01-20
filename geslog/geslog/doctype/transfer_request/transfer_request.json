@@ -60,7 +60,7 @@
    "options": "Geslog Task"
   },
   {
-   "depends_on": "task",
+   "depends_on": "eval: doc.task && doc.items_transfer_to_investiments",
    "fetch_from": "task.reservation_number",
    "fieldname": "reservation_number",
    "fieldtype": "Data",
@@ -113,7 +113,8 @@
    "fieldname": "from_warehouse",
    "fieldtype": "Link",
    "label": "From Warehouse",
-   "options": "Warehouse"
+   "options": "Warehouse",
+   "reqd": 1
   },
   {
    "fieldname": "to_warehouse",
@@ -150,7 +151,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-12-15 15:31:42.667191",
+ "modified": "2023-01-20 00:54:16.896298",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Transfer Request",

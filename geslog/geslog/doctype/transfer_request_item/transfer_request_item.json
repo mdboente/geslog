@@ -71,8 +71,7 @@
    "fieldname": "stock_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Stock Qty",
-   "print_hide": 1
+   "label": "Qty"
   },
   {
    "fieldname": "price",
@@ -114,13 +113,14 @@
    "fieldname": "target_warehouse",
    "fieldtype": "Link",
    "label": "Target Warehouse",
-   "options": "Warehouse"
+   "options": "Warehouse",
+   "print_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-10-02 14:00:52.503200",
+ "modified": "2023-01-20 01:09:26.388459",
  "modified_by": "Administrator",
  "module": "Geslog",
  "name": "Transfer Request Item",
